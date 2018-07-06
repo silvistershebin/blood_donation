@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <!--Import Google Icon Font-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!--Import materialize.css-->
+     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+     <link type="text/css" rel="stylesheet" href="css/mycss.css" media="screen,projection"/>
+     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+     <!--Let browser know website is optimized for mobile-->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   </head>
+   <body style="background-color: #ffcdd2">
+     <nav class="nav-extended">
+       <div class="nav-wrapper">
+         <img class="brand-logo" src="images/logofff.png"/>
+       </div>
+     </nav>
+     <div class="container">
+       <div>
+         <h5 class="center-align">Please fill the following Details for Registration</h5>
+       </div>
+       <div class="row">
+         <form class="col s12" method="POST" action="welcome.html">
+           <div class="row">
+             <div class="input-field col s6 ">
+               <input id="first_name" type="text"  class="validate" required>
+               <label for="first_name" class="black-text">First Name</label>
+             </div>
+             <div class="input-field col s6">
+               <input id="last_name" type="text"  class="validate" required>
+               <label for="last_name" class="black-text">Last Name</label>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="password" type="password" min="6" class="validate" required>
+               <label for="password" class="black-text">Password</label>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col s12">
+               <input id="email" type="email"  class="validate" required>
+               <label for="email" class="black-text">Email</label>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col s6">
+               <input id="age" type="number" min="18" max="80" class="validate" required>
+               <label for="age" class="black-text">Age</label>
+             </div>
+           </div>
+           <div class="row">
+             <div >
+               <form id="group1" method="POST" action="welcome.html">
+               <label><h6>Gender<h6></label>
+               <p>
+                <label>
+                  <input class="with-gap" name="group1" value="Male" type="radio">
+                  <span>Male</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input class="with-gap" name="group1" value="Female" type="radio" checked >
+                  <span>Female</span>
+                </label>
+              </p>
+            </form>
+             </div>
+           </div>
+           <div class="row">
+             <div class="input-field col s6">
+               <input id="mobile" type="text" pattern="[789][0-9]{9}" size="10" class="validate" required>
+               <label for="mobile" class="black-text">Mobile</label>
+             </div>
+           </div>
+           <div class="row">
+            <div class="input-field col s12">
+              <textarea id="textarea1" class="materialize-textarea"></textarea>
+              <label for="textarea1" class="black-text">Address</label>
+            </div>
+          </div>
+          <div class="row">
+            <div>
+            <form id="group3" method="POST" action="welcome.html">
+              <label><h6>Blood Group<h6></label>
+                <p>
+                 <label>
+                   <input class="with-gap" value="O-positive" name="group3" type="radio" checked>
+                   <span>O-positive</span>
+                 </label>
+               </p>
+               <p>
+                 <label>
+                   <input class="with-gap" value="O-negative" name="group3" type="radio" >
+                   <span>O-negative</span>
+                 </label>
+               </p>
+               <p>
+                <label>
+                  <input class="with-gap" value="A-positive" name="group3" type="radio">
+                  <span>A-positive</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input class="with-gap" value="A-negative" name="group3" type="radio" >
+                  <span>A-negative</span>
+                </label>
+              </p>
+              <p>
+               <label>
+                 <input class="with-gap" value="B-positive" name="group3" type="radio">
+                 <span>B-positive</span>
+               </label>
+             </p>
+             <p>
+               <label>
+                 <input class="with-gap" value="B-negative" name="group3" type="radio" >
+                 <span>B-negative</span>
+               </label>
+             </p>
+              <p>
+               <label>
+                 <input class="with-gap" value="AB-positive" name="group3" type="radio">
+                 <span>AB-positive</span>
+               </label>
+             </p>
+             <p>
+               <label>
+                 <input class="with-gap" value="AB-negative" name="group3" type="radio" >
+                 <span>AB-negative</span>
+               </label>
+             </p>
+           </form>
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label><h6>Last Donated<h6></label>
+                <input type="date" id="date">
+              </div>
+            </div>
+            <button onclick="create_donor()" id="reg_don" class="btn waves-effect waves-light btn-action" type="submit" name="action">Submit
+             <i class="material-icons right">send</i>
+           </button>
+         </form>
+       </div>
+     </div>
+   <!--JavaScript at end of body for optimized loading-->
+   <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyCI-cbv_5Ba4IoYHSPi-tDlmhQtfO3uC_s",
+          authDomain: "blood-donation-1c889.firebaseapp.com",
+          databaseURL: "https://blood-donation-1c889.firebaseio.com",
+          projectId: "blood-donation-1c889",
+          storageBucket: "blood-donation-1c889.appspot.com",
+          messagingSenderId: "422385436967"
+        };
+        firebase.initializeApp(config);
+      </script>
+      <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+      <script src="js/myscript.js"></script>
+ </body>
+</html>
