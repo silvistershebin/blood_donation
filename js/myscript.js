@@ -9,11 +9,13 @@ $('.sidenav').sidenav();
 
 firebase.auth()onAuthStateChanged(function(user)
 {
+
   if(user){
     document.getElementById('logout').style.display = 'block';
     document.getElementById('login').style.display = 'none';
 
     var user = firebase.auth().currentUser;
+
 
     if(user !=null)
     {
